@@ -1,9 +1,9 @@
-package model.entity;
+package model.entity.aula05;
 
 import java.util.ArrayList;
 
 public class Cliente {
-
+	private int id;
 	private String nome;
 	private String sobrenome;
 	private String cpf;
@@ -11,8 +11,7 @@ public class Cliente {
 	private Endereco endereco;
 
 	public Cliente() {
-		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public Cliente(String nome, String sobrenome, String cpf, ArrayList<Telefone> telefones, Endereco endereco) {
@@ -70,8 +69,7 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-
-		String mensagem = "Cliente: " + this.getNomeCompleto() + " - CPF:" + cpf + ". " + "\n Endereço:" + endereco
+		String mensagem = "Cliente: " + this.getNomeCompleto() + " (" + cpf + "). " + "\nEndereço: " + endereco
 				+ "\nTelefones: ";
 
 		for (Telefone t : telefones) {
@@ -79,10 +77,13 @@ public class Cliente {
 		}
 
 		return mensagem;
-
-		// return "Cliente: " + nome + " " + sobrenome + " - CPF:" + cpf + ". \n
-		// Telefones:" + telefones + "\n Endereço:"
-		// + endereco + "";
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 }
