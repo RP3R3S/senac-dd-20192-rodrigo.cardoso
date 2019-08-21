@@ -8,7 +8,6 @@ public class Diretoria extends Lotacao {
 
 	public Diretoria() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Diretoria(int id, String nome, Lotacao lotacaoSuperior, Funcionario responsavel, String sigla,

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.dao.Banco;
@@ -77,11 +78,40 @@ public class LotacaoDAO implements BaseDAO<Lotacao> {
 
 //	@Override
 	public boolean excluir(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		// Apagar lotacaoSuperior de todos as gerencias da Diretoria
+		LotacaoDAO lotDAO = new LotacaoDAO();
+		lotDAO.desvincularDiretoria(id);
+		// Apagar lotacaoSuperior de todos os funcionarios da Gerencia
+		lotDAO.desvincularFuncionarios(id);
+
+		// Apagar a lotacao
+		Connection conn = Banco.getConnection();
+		String sql = "DELETE FROM LOTACAO WHERE ID= " + id;
+		Statement stmt = Banco.getStatement(conn);
+
+		int quantidadeLinhasAfetadas = 0;
+		try {
+			quantidadeLinhasAfetadas = stmt.executeUpdate(sql);
+
+		} catch (SQLException e) {
+			System.out.println("Erro ao excluir LOTACAO.");
+			System.out.println("Erro: " + e.getMessage());
+		}
+
+		return quantidadeLinhasAfetadas > 0;
 	}
 
-//	@Override
+	private void desvincularFuncionarios(int id) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void desvincularDiretoria(int id) {
+		// TODO Auto-generated method stub
+
+	}
+
+	// @Override
 	public boolean alterar(Lotacao entidade) {
 		// TODO Auto-generated method stub
 		return false;
