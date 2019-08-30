@@ -3,25 +3,34 @@ package model.entity.lista01;
 import java.util.ArrayList;
 
 public class Gerencia extends Lotacao {
-	private ArrayList<Operacional> operacionais;
-
-	public Gerencia() {
-		super();
-		// TODO Auto-generated constructor stub
+	
+	private Gerente gerente;
+	private ArrayList<EmpregadoOperacional> funcionariosOperacionais;
+	
+	public Gerencia(String nome, String sigla, Gerente gerente, ArrayList<EmpregadoOperacional> operacionais) {
+		super(nome, sigla);
+		this.gerente = gerente;
+		this.funcionariosOperacionais = operacionais;
 	}
 
-	public Gerencia(int id, String nome, Lotacao lotacaoSuperior, Funcionario responsavel,
-			ArrayList<Operacional> operacionais) {
-		super(id, nome, lotacaoSuperior, responsavel);
-		this.operacionais = operacionais;
+	public Gerente getGerente() {
+		return gerente;
 	}
 
-	public ArrayList<Operacional> getOperacionais() {
-		return operacionais;
+	public void setGerente(Gerente gerente) {
+		this.gerente = gerente;
 	}
 
-	public void setOperacionais(ArrayList<Operacional> operacionais) {
-		this.operacionais = operacionais;
+	public ArrayList<EmpregadoOperacional> getFuncionariosOperacionais() {
+		return funcionariosOperacionais;
 	}
 
+	public void setFuncionariosOperacionais(ArrayList<EmpregadoOperacional> funcionariosOperacionais) {
+		this.funcionariosOperacionais = funcionariosOperacionais;
+	}
+
+	@Override
+	public String toString() {
+		return "Gerencia [gerente=" + gerente + ", funcionariosOperacionais=" + funcionariosOperacionais + "]";
+	}
 }

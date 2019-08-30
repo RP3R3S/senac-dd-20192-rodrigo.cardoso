@@ -1,11 +1,15 @@
 package model.entity.lista01;
 
-public class Diretor extends Funcionario {
-	private double comissao;
+public class Diretor extends Empregado {
 
-	public Diretor(int id, String nome, String cpf, char sexo, int idade, double salarioBruto, Lotacao lotacao,
-			double comissao) {
-		super(id, nome, cpf, sexo, idade, salarioBruto, lotacao);
+	private double comissao;
+	
+	public Diretor() {
+		
+	}
+	
+	public Diretor(String nome, String cpf, char sexo, int idade, double salarioBruto, double comissao) {
+		super(nome, cpf, sexo, idade, salarioBruto);
 		this.comissao = comissao;
 	}
 
@@ -21,5 +25,4 @@ public class Diretor extends Funcionario {
 	public void setComissao(double comissao) {
 		this.comissao = comissao;
 	}
-
 }
